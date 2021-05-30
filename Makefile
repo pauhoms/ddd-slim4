@@ -32,7 +32,10 @@ lint:
 auth-dev:
 	php -S localhost:8080 -t apps/public apps/public/authentication.php
 
-test:
+test: generate-test-data
 	./vendor/phpunit/phpunit/phpunit
+
+generate-test-data:
+	docker exec -i auth-database sh -c 'exec mysql -uroot -p"toor"  --database="auth_database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/test-data.sql
 
 .PHONY: build
