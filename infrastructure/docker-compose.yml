@@ -4,11 +4,11 @@ services:
   database:
     build:
       context: ./docker/database
-    container_name: ${PROJECT_NAME}-Database
+    container_name: auth-database
     environment:
-      - MYSQL_DATABASE=${DATABASE_NAME}
-      - MYSQL_USER=${DATABASE_USER}
-      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
+      - MYSQL_DATABASE=auth_database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=toor
     ports:
       - "3306:3306"
