@@ -10,18 +10,11 @@ use Authentication\Domain\ValueObjects\UserPassword;
 
 final class User
 {
-    private UserId       $id;
-    private UserName     $name;
-    private UserPassword $password;
-
     public function __construct(
-        UserId $id,
-        UserName $name,
-        UserPassword $password
+        private UserId $id,
+        private UserName $name,
+        private UserPassword $password
     ) {
-        $this->id       = $id;
-        $this->name     = $name;
-        $this->password = $password;
     }
 
     public function name(): UserName

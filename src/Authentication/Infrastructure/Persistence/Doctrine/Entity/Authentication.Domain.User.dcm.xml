@@ -6,6 +6,7 @@
     <entity name="Authentication\Domain\User"
             table="user"
             schema="auth_database">
+
         <id name="id" type="user_id" column="id" length="36" />
 
         <embedded name="name" class="Authentication\Domain\ValueObjects\UserName" use-column-prefix="false" />

@@ -8,5 +8,8 @@
         <testsuite name="Authentication">
             <directory suffix="Test.php">./tests/Authentication/</directory>
         </testsuite>
+        <testsuite name="Shared">
+            <directory suffix="Test.php">./tests/Shared/</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

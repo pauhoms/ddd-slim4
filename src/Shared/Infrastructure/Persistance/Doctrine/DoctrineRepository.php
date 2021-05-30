@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ObjectRepository;
+use Shared\Domain\Criteria\Criteria;
 
 abstract class DoctrineRepository
 {
@@ -42,8 +43,21 @@ abstract class DoctrineRepository
         return $this->entityManager->createQueryBuilder();
     }
 
-    protected function repository(string $className)
+    protected function repository(): EntityRepository
     {
-        return $this->entityManager->getRepository($className);
+        return $this->entityManager->getRepository($this->getClass());
     }
+
+    protected function searchByCriteria(Criteria $criteria)
+    {
+        $doctrineCriteria = DoctrineCriteriaConverter::convert($criteria);
+
+        return $this->repository()
+            ->createQueryBuilder('u')
+            ->addCriteria($doctrineCriteria)
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    protected abstract function getClass(): string;
 }
