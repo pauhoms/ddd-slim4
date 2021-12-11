@@ -9,6 +9,6 @@ abstract class AuthenticationFeatureTestCase extends FeatureTestCase
 {
     function getAppInstance(): App
     {
-        return require __DIR__ . '/../../apps/authentication/bootstrap.php';
+        return require __DIR__ . '/../../apps/bootstrap.php';
     }
 }

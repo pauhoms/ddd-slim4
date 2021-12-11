@@ -2,7 +2,6 @@
 
 use Slim\Factory\AppFactory;
 
-require __DIR__ . '/../../vendor/autoload.php';
 
 $containerBuilder = require __DIR__ . '/configuration/container.php';
 
