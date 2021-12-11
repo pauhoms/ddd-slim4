@@ -11,7 +11,7 @@ abstract class DoctrineTestCase extends TestCase
 {
     protected function getEntityManager(): EntityManager
     {
-        $data = require __DIR__ . '/../../../apps/configuration/database.php';
+        $data = require __DIR__ . '/../../../app/configuration/database.php';
         $entityManager = $data();
         $entityManager->getConnection()->connect();
 
