@@ -1,4 +1,4 @@
-{
+app{
     "name": "pauhoms/base-slimframework",
     "description": "Base repository for api slim framework projects",
     "type": "project",

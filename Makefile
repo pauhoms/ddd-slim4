@@ -1,4 +1,4 @@
-#!/bin/bash
+app#!/bin/bash
 
 OS := $(shell uname)
 

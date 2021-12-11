@@ -1,4 +1,4 @@
-<?php
+app<?php
 
 namespace Tests\Authentication;
 
