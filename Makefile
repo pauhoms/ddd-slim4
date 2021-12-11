@@ -1,4 +1,4 @@
-app#!/bin/bash
+#!/bin/bash
 
 OS := $(shell uname)
 
@@ -15,7 +15,7 @@ help: ## Show this help message
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 build: ## Rebuilds all the containers
-	U_ID=${UID} docker build -t thrivo-api ./infrastructure/docker/database/
+	U_ID=${UID} docker build -t api ./infrastructure/docker/database/
 	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml build
 
 run: ## Start the containers

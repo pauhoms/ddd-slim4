@@ -1,4 +1,4 @@
-app<?php
+<?php
 
 namespace Tests\Authentication;
 
@@ -9,6 +9,6 @@ abstract class AuthenticationFeatureTestCase extends FeatureTestCase
 {
     function getAppInstance(): App
     {
-        return require __DIR__ . '/../../apps/bootstrap.php';
+        return require __DIR__ . '/../../app/bootstrap.php';
     }
 }
