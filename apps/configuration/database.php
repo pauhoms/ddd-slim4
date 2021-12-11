@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\Type;
 return function (): EntityManager {
     $settings = require __DIR__ . '/settings.php';
     $config = Setup::createXMLMetadataConfiguration(
-        $settings['-mysql']['metadata_dirs'],
+        $settings["mysql']['metadata_dirs'],
         true
     );
 
