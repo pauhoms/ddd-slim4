@@ -5,6 +5,6 @@ use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
     $app->group('/api/authentication', function (RouteCollectorProxy $group) {
-        $group->get('/health-check', 'App\Authentication\Controllers\HealthCheck');
+        $group->get('/health-check', 'App\Controllers\HealthCheck');
     });
 };

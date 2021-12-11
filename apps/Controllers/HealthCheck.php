@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App;
+namespace App\Controllers;
 
 use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface as Response;
