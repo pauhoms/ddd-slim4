@@ -7,7 +7,7 @@ return [
             __DIR__ . '/../../src/Authentication/Infrastructure/Persistence/Doctrine/Entity/'
         ],
         'custom-type' => [
-            ['user_id', 'Authentication\Infrastructure\Persistence\Doctrine\Entity\UserIdType']
+            ['user_id', 'User\Infrastructure\Persistence\Doctrine\Entity\UserIdType']
         ],
         'connection' => [
             'driver' => 'pdo_mysql',
