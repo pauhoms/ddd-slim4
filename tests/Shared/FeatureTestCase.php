@@ -12,7 +12,10 @@ use Slim\Psr7\Uri;
 
 abstract class FeatureTestCase extends TestCase
 {
-    abstract function getAppInstance(): App;
+    private function getAppInstance(): App
+    {
+        return require __DIR__ . '/../../app/bootstrap.php';
+    }
 
     protected function createRequest(
         string $method,

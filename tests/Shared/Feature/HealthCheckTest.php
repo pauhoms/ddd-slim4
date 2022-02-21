@@ -1,15 +1,16 @@
 <?php
 
 
-namespace Tests\User;
+namespace Tests\Shared\Feature;
 
+use Tests\Shared\FeatureTestCase;
 
-class HealthCheckTest extends UserFeatureTestCase
+class HealthCheckTest extends FeatureTestCase
 {
     /** @test */
     public function databaseShouldBeConnected(): void
     {
-        $request = $this->createRequest('GET', '/api/authentication/health-check');
+        $request = $this->createRequest('GET', '/api/health-check');
         $isConnected = $this->getResponseResult($request)['mariadb'];
 
         $this->assertEquals(200, $request->getStatusCode());
