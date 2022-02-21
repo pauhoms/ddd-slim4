@@ -4,11 +4,37 @@ services:
   database:
     build:
       context: ./docker/database
-    container_name: auth-database
+    container_name: database
     environment:
-      - MYSQL_DATABASE=auth_database
+      - MYSQL_DATABASE=database
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=toor
     ports:
       - "3306:3306"
+
+  rest-api:
+    build:
+      context: ./../
+      dockerfile: ./infrastructure/docker/php/Dockerfile
+    volumes:
+      - ../:/var/www/html
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    container_name: "swagger-ui"
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./../documentation/api.json:/api.json
+    environment:
+      SWAGGER_JSON: /api.json
+
+  nginx:
+    build:
+      context: ./../
+      dockerfile: ./infrastructure/docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - rest-api

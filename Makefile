@@ -15,7 +15,8 @@ help: ## Show this help message
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 build: ## Rebuilds all the containers
-	U_ID=${UID} docker build -t api ./infrastructure/docker/database/
+	U_ID=${UID} docker build -t database ./infrastructure/docker/database/
+	U_ID=${UID} docker build . -t rest-api -f ./infrastructure/docker/php/Dockerfile
 	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml build
 
 run: ## Start the containers
@@ -24,18 +25,22 @@ run: ## Start the containers
 stop: ## Stop the containers
 	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml down -v
 
+install:
+	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml exec -T rest-api composer install
+
 fix-permissions:
 	chmod -R 775 infrastructure/docker/database/data/
-lint:
-	./vendor/bin/phplint ./
 
-auth-dev:
-	php -S localhost:8080 -t apps/public apps/public/authentication.php
+lint:
+	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml exec -T rest-api ./vendor/bin/phplint ./
+
+validate:
+	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml exec -T rest-api composer validate --strict
 
 test: migrations
-	./vendor/phpunit/phpunit/phpunit
+	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml exec -T rest-api ./vendor/phpunit/phpunit/phpunit
 
 migrations:
-	docker exec -i auth-database sh -c 'exec mysql -uroot -p"toor"  --database="auth_database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/auth-test-data.sql
+	docker exec -i database sh -c 'exec mysql -uroot -p"toor"  --database="database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/test-data.sql
 
 .PHONY: build
