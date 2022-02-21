@@ -1,0 +1,17 @@
+get:
+  summary: Health check
+  tags:
+    - Health check
+  description: End point para retornar el estado de los servicios
+  responses:
+    '200':
+      description: Lista con el estado de cada servicio
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              mariadb:
+                type: boolean
+                example: true
+

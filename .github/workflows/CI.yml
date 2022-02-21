@@ -16,10 +16,10 @@ jobs:
         make run
 
     - name: 📚 Validate composer.json and composer.lock
-      run: composer validate --strict
+      run: make validate 
 
     - name: 📖 Install dependencies
-      run: composer install
+      run: make install
     
     - name: 📔 Linter
       run: make lint
