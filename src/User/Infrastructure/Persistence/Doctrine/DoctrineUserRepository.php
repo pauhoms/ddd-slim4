@@ -6,13 +6,7 @@ namespace User\Infrastructure\Persistence\Doctrine;
 
 use User\Domain\User;
 use User\Domain\ValueObjects\UserId;
-use User\Domain\ValueObjects\UserName;
-use User\Domain\ValueObjects\UserPassword;
-use Doctrine\Common\Collections\Criteria as DoctrineCriteria;
-use Doctrine\Common\Collections\Expr\Comparison;
-use Doctrine\DBAL\Schema\Comparator;
 use Shared\Domain\Criteria\Criteria;
-use Shared\Infrastructure\Persistance\Doctrine\DoctrineCriteriaConverter;
 use Shared\Infrastructure\Persistance\Doctrine\DoctrineRepository;
 
 final class DoctrineUserRepository extends DoctrineRepository

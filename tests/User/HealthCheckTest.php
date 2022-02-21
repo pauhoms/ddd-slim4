@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Tests\Authentication;
+namespace Tests\User;
 
 
-class HealthCheckTest extends AuthenticationFeatureTestCase
+class HealthCheckTest extends UserFeatureTestCase
 {
     /** @test */
     public function databaseShouldBeConnected(): void

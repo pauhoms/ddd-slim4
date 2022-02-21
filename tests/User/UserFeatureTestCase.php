@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Authentication;
+namespace Tests\User;
 
 use Tests\Shared\FeatureTestCase;
 use Slim\App;
 
-abstract class AuthenticationFeatureTestCase extends FeatureTestCase
+abstract class UserFeatureTestCase extends FeatureTestCase
 {
     function getAppInstance(): App
     {

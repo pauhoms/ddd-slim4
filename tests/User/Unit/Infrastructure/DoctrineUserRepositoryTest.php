@@ -1,26 +1,23 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\User\User\Unit\Infrastructure;
+namespace Tests\User\Unit\Infrastructure;
 
 
 use User\Domain\User;
+use Shared\Domain\Criteria\Order;
+use Shared\Domain\Criteria\Filter;
+use Shared\Domain\Criteria\Filters;
+use Shared\Domain\Criteria\OrderBy;
+use Shared\Domain\Criteria\Criteria;
 use User\Domain\ValueObjects\UserId;
 use User\Domain\ValueObjects\UserName;
+use Shared\Domain\Criteria\FilterField;
+use Shared\Domain\Criteria\FilterValue;
+use Tests\User\Shared\DoctrineTestCase;
+use Shared\Domain\Criteria\FilterOperator;
 use User\Domain\ValueObjects\UserPassword;
 use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
-use Shared\Domain\Criteria\Criteria;
-use Shared\Domain\Criteria\Filter;
-use Shared\Domain\Criteria\FilterField;
-use Shared\Domain\Criteria\FilterOperator;
-use Shared\Domain\Criteria\Filters;
-use Shared\Domain\Criteria\FilterValue;
-use Shared\Domain\Criteria\Order;
-use Shared\Domain\Criteria\OrderBy;
-use Shared\Domain\ValueObjects\Enum;
-use Shared\Domain\ValueObjects\StringValueObject;
-use Shared\Infrastructure\Persistance\Doctrine\DoctrineCriteriaConverter;
-use Tests\User\Shared\DoctrineTestCase;
 
 
 final class DoctrineUserRepositoryTest extends DoctrineTestCase
