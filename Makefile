@@ -40,7 +40,10 @@ validate:
 test: migrations
 	U_ID=${UID} docker-compose -f infrastructure/docker-compose.yml exec -T rest-api ./vendor/phpunit/phpunit/phpunit
 
-migrations:
+wait-for-database:
+	U_ID=${UID} bash infrastructure/docker/database/wait-for-database.sh
+
+migrations: wait-for-database
 	docker exec -i database sh -c 'exec mysql -uroot -p"toor"  --database="database"' --default-character-set=utf8mb4 < ./infrastructure/docker/database/test-data.sql
 
 .PHONY: build
