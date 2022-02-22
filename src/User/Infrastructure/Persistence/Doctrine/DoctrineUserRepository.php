@@ -21,7 +21,7 @@ final class DoctrineUserRepository extends DoctrineRepository
         return $this->repository()->findAll();
     }
 
-    public function findById(UserId $userId): ?object
+    public function findById(UserId $userId): ?User
     {
         return $this->repository()->find($userId);
     }

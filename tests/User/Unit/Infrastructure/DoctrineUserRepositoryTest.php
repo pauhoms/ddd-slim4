@@ -17,8 +17,8 @@ use Shared\Domain\Criteria\FilterValue;
 use Tests\User\Shared\DoctrineTestCase;
 use Shared\Domain\Criteria\FilterOperator;
 use User\Domain\ValueObjects\UserPassword;
+use User\Domain\ValueObjects\UserPrivateKey;
 use User\Infrastructure\Persistence\Doctrine\DoctrineUserRepository;
-
 
 final class DoctrineUserRepositoryTest extends DoctrineTestCase
 {
@@ -33,7 +33,7 @@ final class DoctrineUserRepositoryTest extends DoctrineTestCase
     /** @test */
     public function userShouldBeSaved(): void
     {
-        $user = User::create(new UserName("pau"), new UserPassword("root"));
+        $user = User::create(new UserName("pau"), new UserPassword("root"), UserPrivateKey::generate());
         $this->userRepository->save($user);
 
         $this->assertNotNull($this->userRepository->findById($user->id()));
