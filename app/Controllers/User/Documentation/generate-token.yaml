@@ -1,4 +1,4 @@
-post:
+put:
   summary: Generate token for authentication 
   tags:
     - User
@@ -50,5 +50,5 @@ post:
             properties:
               error-message:
                 type: string
-                example: "Your credentials are incorrect"
+                example: "Query parameters are invalid"
 

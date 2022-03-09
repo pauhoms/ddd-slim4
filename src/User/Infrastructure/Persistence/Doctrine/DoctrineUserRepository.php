@@ -8,8 +8,9 @@ use User\Domain\User;
 use User\Domain\ValueObjects\UserId;
 use Shared\Domain\Criteria\Criteria;
 use Shared\Infrastructure\Persistance\Doctrine\DoctrineRepository;
+use User\Domain\Repositories\UserRepository;
 
-final class DoctrineUserRepository extends DoctrineRepository
+final class DoctrineUserRepository extends DoctrineRepository implements UserRepository 
 {
     public function save(User $user): void
     {
@@ -26,7 +27,7 @@ final class DoctrineUserRepository extends DoctrineRepository
         return $this->repository()->find($userId);
     }
 
-    public function search(Criteria $criteria)
+    public function search(Criteria $criteria): array
     {
         return $this->searchByCriteria($criteria);
     }
