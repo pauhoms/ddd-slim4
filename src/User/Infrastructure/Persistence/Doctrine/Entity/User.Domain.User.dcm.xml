@@ -11,5 +11,6 @@
 
         <embedded name="name" class="User\Domain\ValueObjects\UserName" use-column-prefix="false" />
         <embedded name="password" class="User\Domain\ValueObjects\UserPassword" use-column-prefix="false"/>
+        <embedded name="privateKey" class="User\Domain\ValueObjects\UserPrivateKey" use-column-prefix="false"/>
     </entity>
 </doctrine-mapping>

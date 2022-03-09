@@ -1,0 +1,54 @@
+put:
+  summary: Generate token for authentication 
+  tags:
+    - User
+  description: Generate JWT token to be able to use our endpoints.
+  requestBody:
+    description: Parameters for validate your credentials.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            username:
+              type: string
+              example: "pauhoms"
+            password:
+              type: string
+              example: "paupassword"
+
+  responses:
+    '200':
+      description: Token has been generated successfully.
+      content:
+        application/json:
+          schema: 
+            type: object
+            properties:
+              token:
+                type: string
+                example: "eyJhbGciOiJvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+
+    '400':
+      description: The query parameters is incorrect
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "Query parameters are invalid"
+
+    '401':
+      description: Invalid credentials
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error-message:
+                type: string
+                example: "Query parameters are invalid"
+

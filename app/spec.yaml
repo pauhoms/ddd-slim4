@@ -1,11 +1,13 @@
 openapi: 3.0.0
 info:
-  title: Gdflota api
-  version: 0.0.1
+  title: Blog api
+  version: 1.0.0
 servers:
   - url: http://localhost/
     description: Local server
 
 paths:
-  /api/health-check:
+  /api/v1/health-check:
     $ref: "./Controllers/health-check.yaml"
+  /api/v1/user/generate-token:
+    $ref: "./Controllers/User/Documentation/generate-token.yaml"
